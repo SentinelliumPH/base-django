@@ -4,8 +4,13 @@ import os
 # Configure the domain name using the environment variable
 # that Azure automatically creates for us.
 DEBUG = False
-
+# Configure the domain name using the environment variable
+# that Azure automatically creates for us.
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+
+if 'DJANGO_HOSTNAME' in os.environ:
+    ALLOWED_HOSTS.append(os.environ['DJANGO_HOSTNAME'])
+
 
 # WhiteNoise configuration
 MIDDLEWARE = [                                                                   
